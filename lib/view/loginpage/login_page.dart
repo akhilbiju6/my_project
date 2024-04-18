@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:project_twitter/view/homescreen/home_screen.dart';
 import 'package:project_twitter/view/utils/colorconstants.dart';
 
 class LoginPage extends StatelessWidget {
@@ -16,34 +17,39 @@ class LoginPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextField(
-              decoration: InputDecoration(
-                 border: UnderlineInputBorder(
-                  
-                 ),
-                 
-              ),
-            ), TextField(
-              decoration: InputDecoration(
-                 border: UnderlineInputBorder(
-                  
-                 )),),
-                 SizedBox(
-                  height: 50,
-                 ),
-                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                   children: [
-                     Text("already have an acoount?? login",style: TextStyle(
-                      color:ColorConstants.mycustomblue,
-                      fontSize: 15
-                     ),),
-                     SizedBox(
-                      width: 10,
-                     ),
+          Container(
+            width: 350,
+            height: 50,
+            child: Center(
+              child: TextField(
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(),
+                  hintText: "Enter your email id",
+                   
                     
-                   ],
-                 )
+                   ),),
+            ),
+          ),
+          SizedBox(height: 30,), Container(
+            width: 350,
+            height: 50,
+            child: Center(
+              child: TextField(
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(),
+                  hintText: "Enter your password",
+                   
+                    
+                   ),),
+            ),
+          ),
+                 SizedBox(
+                  height: 25,
+                 ),
+                ElevatedButton(onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),)),
+                 child: Text("login"))
           ],
         ),
       ),
