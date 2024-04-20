@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:project_twitter/control/homescreencontroller/homescreencontroller.dart';
@@ -126,7 +128,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Container(
                     decoration: BoxDecoration(
                       color: ColorConstants.mycustombrown1,
-                      borderRadius: BorderRadius.circular(10)
+                      borderRadius: BorderRadius.circular(10),
+                      
+                    ),
+                    child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("mileage calculator",style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold
+                        ),),
+                      ],
                     ),
                     height: 130,
                     width: 170,
