@@ -10,7 +10,9 @@ class RegistrationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorConstants.mycustombage,
       appBar: AppBar(
+        backgroundColor: ColorConstants.mycustombrown1,
         title: Center(child: Text("Registration screen")),
       ),
       
@@ -30,6 +32,7 @@ class RegistrationScreen extends StatelessWidget {
                   enabledBorder: OutlineInputBorder(),
                   focusedBorder: OutlineInputBorder(),
                   hintText: "Enter your name",
+                  
                    
                     
                    ),),
@@ -120,7 +123,7 @@ class RegistrationScreen extends StatelessWidget {
                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => 
                     LoginPage(),)),
                      child: Text("already have an acoount?? login",style: TextStyle(
-                      color:ColorConstants.mycustomblue,
+                      color:ColorConstants.mycustombrown2,
                       fontSize: 17
                      ),),
                    ),

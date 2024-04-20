@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:project_twitter/view/bottomnavigationscreen/bottomnavigationscxreen.dart';
 import 'package:project_twitter/view/homescreen/home_screen.dart';
 import 'package:project_twitter/view/utils/colorconstants.dart';
 
@@ -10,7 +11,9 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorConstants.mycustombage,
      appBar: AppBar(
+      backgroundColor: ColorConstants.mycustombrown1,
         title: Center(child: Text("login screen")),
       ),
       body: Center(
@@ -48,7 +51,7 @@ class LoginPage extends StatelessWidget {
                  SizedBox(
                   height: 25,
                  ),
-                ElevatedButton(onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),)),
+                ElevatedButton(onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => BottomNavigationScreen(),)),
                  child: Text("login"))
           ],
         ),
