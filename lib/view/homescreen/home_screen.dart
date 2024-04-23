@@ -1,7 +1,8 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last, prefer_const_literals_to_create_immutables
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:project_twitter/control/homescreencontroller/homescreencontroller.dart';
 import 'package:project_twitter/view/utils/colorconstants.dart';
 import 'package:provider/provider.dart';
@@ -9,11 +10,14 @@ import 'package:provider/provider.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final fuelcontroller=TextEditingController();
+  var mybox=Hive.box("testbox");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,24 +59,79 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: ColorConstants.mycustombrown1,
-                      borderRadius: BorderRadius.all(Radius.circular(10))
+                  child: InkWell(
+                    onTap: () {
+                      showModalBottomSheet(context: context, builder:(context) {
+                       return  Container(
+                        color: ColorConstants.mycustombage,
+                        width: double.infinity,
+                         child: Padding(
+                           padding: const EdgeInsets.only(top: 30),
+                           child: Column(
+                              children: [
+                                Container(
+                                  child: TextField(
+                                    onChanged: (value) => fuelcontroller,
+                                    
+                                    decoration: InputDecoration(
+                                      hintText: "Fuel amount",
+                                    ),
+                                    
+                                  ),
+                                  height: 50,
+                                  width: 370,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: ColorConstants.mycustombrown1
+                                  ),
+                                  
+                                ),SizedBox(height: 20,),
+                                Container(
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText:"Date"
+                                    ),
+                                  ),
+                                  height: 50,
+                                  width: 370,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: ColorConstants.mycustombrown1
+                                  ),
+                                  
+                                ),SizedBox(height: 30,),
+                                ElevatedButton(onPressed: () {
+                                  
+                                  Provider.of<HomeScreenController>(context,listen: false).fuelamount(30, 18);
+                                  Navigator.pop(context);
+                                
+                                }, child: Text("save"))
+                              ],
+                            ),
+                         ),
+                       );
+                      },);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: ColorConstants.mycustombrown1,
+                        borderRadius: BorderRadius.all(Radius.circular(10))
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("fuel  expense",style: TextStyle(
+                            fontSize: 17,
+                            color: ColorConstants.mycustomblack,
+                            fontWeight: FontWeight.bold
+                          ),),
+                          Text(Provider.of<HomeScreenController>(context).totalfuelamount.toString())
+                        ],
+                      ),
+                      height: 130,
+                      width: 170,
+                      
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("fuel  expense",style: TextStyle(
-                          fontSize: 17,
-                          color: ColorConstants.mycustomblack,
-                          fontWeight: FontWeight.bold
-                        ),),
-                      ],
-                    ),
-                    height: 130,
-                    width: 170,
-                    
                   ),
                 ),
                 Padding(
